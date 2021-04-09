@@ -1,0 +1,44 @@
+# Use configs/exploration/gibson_train_w_ar.yaml for anticipation reward
+BASE_TASK_CONFIG_PATH: "config/exploration/bed_train.yaml"
+TRAINER_NAME: "occant_exp"
+ENV_NAME: "ExpRLEnv"
+SIMULATOR_GPU_ID: 0
+SIMULATOR_GPU_IDS: [0,1]
+TORCH_GPU_ID: 0
+VIDEO_OPTION: ["disk", "tensorboard"]
+TENSORBOARD_DIR: "tb"
+VIDEO_DIR: "video_dir"
+EVAL_CKPT_PATH_DIR: "data/new_checkpoints_bed_256"
+NUM_PROCESSES: 8
+SENSORS: ["RGB_SENSOR", "DEPTH_SENSOR"]
+CHECKPOINT_FOLDER: "data/new_checkpoints_bed_256"
+NUM_EPISODES: 10000
+T_EXP: 1000
+CHECKPOINT_INTERVAL: 5
+
+RL:
+  PPO:
+    # ppo params
+    ppo_epoch: 4
+    num_mini_batch: 4
+  ANS:
+    # Uncomment this for anticipation reward
+    # reward_type: "map_accuracy"
+    image_scale_hw: [256, 256]
+    MAPPER:
+      map_size: 261
+      map_scale: 0.02 
+      registration_type: 'moving_average'
+      label_id: 'ego_map_gt_anticipated'
+      ignore_pose_estimator: False
+      map_batch_size: 108
+      use_data_parallel: True
+      replay_size: 12288
+      gpu_ids: [0,1]
+    SEMANTIC_ANTICIPATOR:
+      type: 'sem_rgbd'
+      GP_ANTICIPATION:
+        wall_fov: 120.0
+        resnet_type: 'resnet18'
+        unet_nsf: 32
+        map_scale: 0.2
