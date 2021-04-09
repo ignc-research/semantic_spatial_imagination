@@ -46,5 +46,12 @@ python ./tools/semantic_anti_eval/semantic_anti_eval.py
 
 # Citation
 ```
-
+@misc{shen2021spatial,
+      title={Spatial Imagination With Semantic Cognition for Mobile Robots}, 
+      author={Zhengcheng Shen and Linh Kästner and Jens Lambrecht},
+      year={2021},
+      eprint={2104.03638},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}
 ```
