@@ -1,4 +1,4 @@
-# semantic_spatial_imagination
+# Semantic Spatial Imagination
 This repository contains a PyTorch implementation of our IROS-21 paper: Spatial Imagination With Semantic Cognition for Mobile Robots 
 
 # Abstract
